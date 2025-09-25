@@ -3,7 +3,7 @@ name: Deploy Localstack + Terraform + Amazon S3
 on:
   push:
     branches:
-      - "main"
+      - "master"
 
 permissions:
   contents: read
