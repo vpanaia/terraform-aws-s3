@@ -12,11 +12,11 @@ services:
       - "./.localstack:/var/lib/localstack"
 
   s3-web:
-    image: ghcr.io/${OWNER}/s3-web:latest
+    image: ghcr.io/${OWNER}/s3-web:${TAG}
     container_name: s3-web
     depends_on:
       - localstack
     ports:
       - "3000:3000"
     env_file:
-      - ./.env
+      - ./s3-web/.env
