@@ -89,7 +89,7 @@ jobs:
           terraform apply -input=false -auto-approve tfplan
 
       - name: Generate .env for s3-web from Terraform outputs
-        working-directory: ./terraform
+        working-directory: .
         run: |
           BUCKET=$(terraform output -raw bucket_name 2>/dev/null || echo "")
           cat > ../.env <<EOF
