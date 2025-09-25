@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Terraform + AWS + Docker</title>
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif; margin: 40px;}
+        header {margin-bottom: 20px;}
+        footer {margin-top: 40px;}
+        pre { background: #f4f4f4; padding: 10px; border-radius: 6px;}
+        .badge {display: inline-block; padding: 4px 8px; background-color: #222; color: #fff; border-radius: 4px; font-size: 0.8rem;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Lab Terraform</h1>
+        <p>Pagina generata localmente da infrastruttura Terraform (AWS + Docker)</p>
+    </header>
+
+    <section>
+        <h2>Informazioni Infrastruttura</h2>
+        <ul>
+            <li>
+                <strong>Bucket S3 ID</strong>
+                <span class="badge">${bucket}</span>
+            </li>
+            <li>
+                <strong>Instance ID</strong>
+                <span class="badge">${ec2id}</span>
+            </li>
+            <li>
+                <strong>VPC ID</strong>
+                <span class="badge">${vpcid}</span>
+            </li>
+            <li>
+                <strong>Subnet ID</strong>
+                <span class="badge">${subnetid}</span>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Bucket S3</h2>
+        <pre id="file-list">
+            ...
+        </pre>
+    </section>
+
+    <footer>
+        <small>Generato da Infrastruttura Terraform</small>
+    </footer>
+</body>
+
+</html>
