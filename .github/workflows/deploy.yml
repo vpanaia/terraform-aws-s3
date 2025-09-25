@@ -38,8 +38,8 @@ jobs:
           context: ./s3-web
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
-            ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+            ghcr.io/${{ github.repository_owner }}/s3-web:latest
+            ghcr.io/${{ github.repository_owner }}/s3-web:${{ github.sha }}
           labels: ${{ steps.meta.output.labels }}
   deploy:
     runs-on: ubuntu-latest
@@ -113,11 +113,12 @@ jobs:
 
       - name: Pull and start s3-web
         env:
-          OWNER: ${{ env.OWNER }}
-          REPO:  ${{ env.REPO }}
+          OWNER: ${{ github.repository_owner }}
+          TAG:   ${{ github.sha }}
         run: |
-          OWNER=${OWNER} REPO=${REPO} docker compose -f docker-compose.prod.yml pull s3-web
-          OWNER=${OWNER} REPO=${REPO} docker compose -f docker-compose.prod.yml up -d s3-web
+          echo "Pulling ghcr.io/${OWNER}/s3-web:${TAG}"
+          docker pull ghcr.io/${OWNER}/s3-web:${TAG}
+          OWNER=${OWNER} TAG=${TAG} docker compose -f docker-compose.prod.yml up -d s3-web
 
       - name: Show running containers
         run: docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Ports}}"
