@@ -30,7 +30,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ github.repository_owner }}/${{ enc.IMAGE_NAME }}
+          images: ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}
 
       - name: Build and push
         uses: docker/build-push-action@v6
@@ -38,8 +38,8 @@ jobs:
           context: ./s3-web
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/${{ enc.IMAGE_NAME }}:latest
-            ghcr.io/${{ github.repository_owner }}/${{ enc.IMAGE_NAME }}:${{ github.sha }}
+            ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
+            ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
           labels: ${{ steps.meta.output.labels }}
   deploy:
     runs-on: self-hosted
