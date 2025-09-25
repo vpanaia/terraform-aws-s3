@@ -10,3 +10,13 @@ services:
       - AWS_DEFAULT_REGION=us-east-1
     volumes:
       - "./.localstack:/var/lib/localstack"
+
+  s3-web:
+    image: ghcr.io/${OWNER}/${REPO}/s3-web:latest
+    container_name: s3-web
+    depends_on:
+      - localstack
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./.env
