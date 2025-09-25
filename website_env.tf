@@ -1,5 +1,5 @@
 resource "local_file" "s3_env" {
-  filename        = "${path.module}/s3-js-service/.env"
+  filename        = "${path.module}/s3-web/.env"
   content         = <<-EOT
     PORT=3000
     BUCKET_NAME=${aws_s3_bucket.demo.bucket}
