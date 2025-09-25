@@ -111,6 +111,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Check files before compose
+        run: |
+          echo "PWD: $PWD"
+          ls -la
+          echo "---- docker-compose.prod.yml ----"
+          sed -n '1,120p' docker-compose.prod.yml
+          echo "---- .env ----"
+          cat .env
+      
       - name: Pull and start s3-web
         env:
           OWNER: ${{ github.repository_owner }}
